@@ -1,1 +1,36 @@
 
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY",
+    "version": "PTDL_v1",
+    "update_url": null,
+    "name": "VPS",
+    "author": "BossOPMC!",
+    "description": "A custom egg for running a VPS with multiple OS options and SSH support",
+    "image": "ghcr.io/pterodactyl/yolks:debian",
+    "startup": "/usr/local/bin/run.sh",
+    "stop": "stop",
+    "config": {
+        "files": "{\n    \"/usr/local/bin/run.sh\": {\n        \"parser\": \"file\",\n        \"find\": {},\n        \"write\": []\n    }\n}",
+        "startup": "{\n    \"done\": \"Server is running\",\n    \"userInteraction\": []\n}",
+        "logs": "{}",
+        "stop": "{\n    \"command\": \"stop\"\n}"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\napt update\napt install -y curl wget git systemd openssh-server gnome-terminal bash\ncd /home/container\nwget https://example.com/vps-installer.sh -O installer.sh\nchmod +x installer.sh\n./installer.sh",
+            "container": "ghcr.io/pterodactyl/yolks:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "OS_VERSION",
+            "description": "Select the operating system to use.",
+            "env_variable": "OS_VERSION",
+            "default_value": "ubuntu:20.04",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:ubuntu:20.04,debian:10,alpine"
+        }
+    ]
+}
