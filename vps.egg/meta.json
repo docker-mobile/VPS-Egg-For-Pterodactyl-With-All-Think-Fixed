@@ -17,7 +17,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!/bin/bash\napt update\napt install -y curl wget git systemd openssh-server gnome-terminal bash\ncd /home/container\nwget https://example.com/vps-installer.sh -O installer.sh\nchmod +x installer.sh\n./installer.sh",
+            "script": "#!/bin/bash\napt update\napt install -y curl wget git systemd openssh-server gnome-terminal bash\ncd /home/container\nwget https://github.com/docker-mobile/VPS-Egg-For-Pterodactyl-With-All-Think-Fixed/raw/main/vps.egg/vps-installer.sh -O installer.sh\nchmod +x installer.sh\n./installer.sh",
             "container": "ghcr.io/pterodactyl/yolks:debian",
             "entrypoint": "bash"
         }
