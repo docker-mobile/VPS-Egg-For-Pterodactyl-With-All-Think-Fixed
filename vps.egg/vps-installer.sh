@@ -11,7 +11,6 @@ packages=(
     "vim"
     "net-tools"
     "sudo"
-    "ufw"
     # Add more packages as needed
 )
 
